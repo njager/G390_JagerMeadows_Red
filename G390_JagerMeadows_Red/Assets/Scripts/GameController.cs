@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    //private variables
+    private Rigidbody rB;
     // Start is called before the first frame update
     void Start()
     {

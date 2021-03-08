@@ -33,4 +33,33 @@ public class FirstPersonLook : MonoBehaviour
         transform.localRotation = Quaternion.AngleAxis(-currentMouseLook.y, Vector3.right);
         character.localRotation = Quaternion.AngleAxis(currentMouseLook.x, Vector3.up);
     }
+    /// <summary>
+    /// new stuff that sends raycast out form camera
+    /// then gets what it is that is being hit
+    /// </summary>
+    /// <returns></returns>
+    /*public ObjectInformation GetItem()
+    {
+        RaycastHit hit;
+        //If the raycast hit
+        if (Physics.Raycast(this.transform.position, this.transform.eulerAngles, out hit, 25f))
+        {
+            if (hit.transform.GetComponent<ObjectInformation>() != null)
+            {
+                return hit.transform.GetComponent<ObjectInformation>();
+            }
+            if(hit.transform.name == "Object1")
+            {
+                return hit.transform.name;
+            }
+            else
+            {
+                return null;
+            }
+        }
+        else
+        {
+            return null;
+        }
+    }*/
 }

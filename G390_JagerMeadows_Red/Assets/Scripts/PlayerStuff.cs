@@ -13,6 +13,8 @@ public class PlayerStuff : MonoBehaviour
     private bool itemFourFound = false;
     private bool itemFiveFound = false;
     private bool itemSixFound = false;
+    public GameObject AdultModel;
+    public GameObject ChildModel;
 
     //public variables
     public Camera playerCam;
@@ -87,15 +89,19 @@ public class PlayerStuff : MonoBehaviour
         if (child == true && other.CompareTag("Mirror"))
         {
             child = false;
-            playerCam.transform.Translate(0, 0.5f, 0);
+            playerCam.transform.Translate(0, 0.6f, 0);
             Debug.Log("You're an adult!");
+            ChildModel.SetActive(false);
+            AdultModel.SetActive(true);
         }
         //if currently a adult, become an child
         else if (child == false && other.CompareTag("Mirror"))
         {
             child = true;
-            playerCam.transform.Translate(0, -0.5f, 0);
+            playerCam.transform.Translate(0, -0.6f, 0);
             Debug.Log("You're a child!");
+            AdultModel.SetActive(false);
+            ChildModel.SetActive(true);
         }
     }
 

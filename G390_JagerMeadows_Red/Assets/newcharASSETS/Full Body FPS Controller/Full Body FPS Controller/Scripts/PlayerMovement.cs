@@ -33,6 +33,7 @@ namespace EasySurvivalScripts
 
         [Header("Animator and Parameters")]
         public Animator CharacterAnimator;
+        public Animator CharacterAnimator2;
         public float HorzAnimation;
         public float VertAnimation;
         public bool JumpAnimation;
@@ -164,10 +165,42 @@ namespace EasySurvivalScripts
                     break;
             }
 
+            if (!CharacterAnimator2)
+                return;
+
+            switch (playerStates)
+            {
+                case PlayerStates.Idle:
+                    HorzAnimation = Mathf.Lerp(HorzAnimation, 0, 5 * Time.deltaTime);
+                    VertAnimation = Mathf.Lerp(VertAnimation, 0, 5 * Time.deltaTime);
+                    break;
+
+                case PlayerStates.Walking:
+                    HorzAnimation = Mathf.Lerp(HorzAnimation, 1 * Input.GetAxis("Horizontal"), 5 * Time.deltaTime);
+                    VertAnimation = Mathf.Lerp(VertAnimation, 1 * Input.GetAxis("Vertical"), 5 * Time.deltaTime);
+                    break;
+
+                case PlayerStates.Running:
+                    HorzAnimation = Mathf.Lerp(HorzAnimation, 2 * Input.GetAxis("Horizontal"), 5 * Time.deltaTime);
+                    VertAnimation = Mathf.Lerp(VertAnimation, 2 * Input.GetAxis("Vertical"), 5 * Time.deltaTime);
+                    break;
+
+                case PlayerStates.Jumping:
+                    if (JumpAnimation)
+                    {
+                        CharacterAnimator.SetTrigger("Jump");
+                        JumpAnimation = false;
+                    }
+                    break;
+            }
+
             LandAnimation = characterController.isGrounded;
             CharacterAnimator.SetFloat("Horizontal", HorzAnimation);
             CharacterAnimator.SetFloat("Vertical", VertAnimation);
             CharacterAnimator.SetBool("isGrounded", LandAnimation);
+            CharacterAnimator2.SetFloat("Horizontal", HorzAnimation);
+            CharacterAnimator2.SetFloat("Vertical", VertAnimation);
+            CharacterAnimator2.SetBool("isGrounded", LandAnimation);
         }
 
         bool onGround()

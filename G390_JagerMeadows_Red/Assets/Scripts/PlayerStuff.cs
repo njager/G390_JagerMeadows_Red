@@ -15,6 +15,7 @@ public class PlayerStuff : MonoBehaviour
     private bool itemSixFound = false;
     public GameObject AdultModel;
     public GameObject ChildModel;
+    public GameObject Mirror;
 
     //public variables
     public Camera playerCam;
@@ -90,6 +91,8 @@ public class PlayerStuff : MonoBehaviour
         {
             child = false;
             playerCam.transform.Translate(0, 0.6f, 0);
+            //Mirror.transform.Translate(0, 0, 1);
+            Mirror.transform.Rotate(0, 180, 0);
             Debug.Log("You're an adult!");
             ChildModel.SetActive(false);
             AdultModel.SetActive(true);
@@ -99,6 +102,8 @@ public class PlayerStuff : MonoBehaviour
         {
             child = true;
             playerCam.transform.Translate(0, -0.6f, 0);
+            //Mirror.transform.Translate(0, 0, -1);
+            Mirror.transform.Rotate(0, -180, 0);
             Debug.Log("You're a child!");
             AdultModel.SetActive(false);
             ChildModel.SetActive(true);

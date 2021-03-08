@@ -3,7 +3,15 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Mirror
+  - Item
+  - ItemOne
+  - ItemTwo
+  - ItemThree
+  - ItemFour
+  - ItemFive
+  - ItemSix
   layers:
   - Default
   - TransparentFX

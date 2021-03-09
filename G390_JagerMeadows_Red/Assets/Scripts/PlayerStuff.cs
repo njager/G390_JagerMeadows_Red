@@ -19,16 +19,20 @@ public class PlayerStuff : MonoBehaviour
     public AudioClip chime;
     public AudioClip pop;
     public AudioClip woosh;
+    public AudioClip clock;
     AudioSource audioSource;
     public GameObject finaldoor;
     public Animator finalanim;
     public GameObject cabinet;
     public Animator cabinetanim;
+    public GameObject cabinet2;
+    public Animator cabinetanim2;
     public Material NextRed;
     public GameObject tag2mat;
     public GameObject tag3mat;
     public GameObject tag4mat;
     public GameObject tag5mat;
+    public GameObject tag5mat02;
     public GameObject tag6mat;
     public GameObject i1;
     public GameObject i2;
@@ -40,6 +44,7 @@ public class PlayerStuff : MonoBehaviour
     public GameObject tag3mat2;
     public GameObject tag4mat2;
     public GameObject tag5mat2;
+    public GameObject tag5mat202;
     public GameObject tag6mat2;
     public GameObject i12;
     public GameObject i22;
@@ -61,7 +66,8 @@ public class PlayerStuff : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         finalanim = finaldoor.GetComponent<Animator>();
         cabinetanim = cabinet.GetComponent<Animator>();
-        
+        cabinetanim2 = cabinet2.GetComponent<Animator>();
+
     }
 
     //called last every frame
@@ -83,7 +89,7 @@ public class PlayerStuff : MonoBehaviour
                 {
                     itemOneFound = true;
                     Debug.Log("You found item one!");
-                    audioSource.PlayOneShot(chime, 0.5F);
+                    audioSource.PlayOneShot(chime, 1.3F);
                     tag2mat.GetComponent<MeshRenderer>().material = NextRed;
                     i1.SetActive(false);
                     tag2mat2.GetComponent<MeshRenderer>().material = NextRed;
@@ -94,48 +100,51 @@ public class PlayerStuff : MonoBehaviour
                 {
                     itemTwoFound = true;
                     Debug.Log("You found item two!");
-                    audioSource.PlayOneShot(chime, 0.5F);
+                    audioSource.PlayOneShot(chime, 1.3F);
                     tag3mat.GetComponent<MeshRenderer>().material = NextRed;
                     i2.SetActive(false);
                     tag3mat2.GetComponent<MeshRenderer>().material = NextRed;
                     i22.SetActive(false);
                 }
-                else if (itemTwoFound == true && interactedObject.tag == "ItemTwo")
+                else if (itemTwoFound == true && interactedObject.tag == "ItemThree")
                 {
                     itemThreeFound = true;
                     Debug.Log("You found item three!");
-                    audioSource.PlayOneShot(chime, 0.5F);
+                    audioSource.PlayOneShot(chime, 1.3F);
                     tag4mat.GetComponent<MeshRenderer>().material = NextRed;
                     i3.SetActive(false);
                     tag4mat2.GetComponent<MeshRenderer>().material = NextRed;
                     i32.SetActive(false);
                 }
-                else if (itemThreeFound == true && interactedObject.tag == "ItemTwo")
+                else if (itemThreeFound == true && interactedObject.tag == "ItemFour")
                 {
                     itemFourFound = true;
                     Debug.Log("You found item four!");
-                    audioSource.PlayOneShot(chime, 0.5F);
+                    audioSource.PlayOneShot(chime, 1.3F);
                     tag5mat.GetComponent<MeshRenderer>().material = NextRed;
+                    tag5mat02.GetComponent<MeshRenderer>().material = NextRed;
                     i4.SetActive(false);
                     tag5mat2.GetComponent<MeshRenderer>().material = NextRed;
+                    tag5mat202.GetComponent<MeshRenderer>().material = NextRed;
                     i42.SetActive(false);
                 }
-                else if (itemFourFound == true && interactedObject.tag == "ItemTwo")
+                else if (itemFourFound == true && interactedObject.tag == "ItemFive")
                 {
                     itemFiveFound = true;
                     Debug.Log("You found item five!");
-                    audioSource.PlayOneShot(chime, 0.5F);
+                    audioSource.PlayOneShot(chime, 1.3F);
                     cabinetanim.SetTrigger("OpenClose");
-                    tag5mat.GetComponent<MeshRenderer>().material = NextRed;
+                    cabinetanim2.SetTrigger("OpenClose2");
+                    tag6mat.GetComponent<MeshRenderer>().material = NextRed;
                     i5.SetActive(false);
-                    tag5mat2.GetComponent<MeshRenderer>().material = NextRed;
+                    tag6mat2.GetComponent<MeshRenderer>().material = NextRed;
                     i52.SetActive(false);
                 }
-                else if (itemFiveFound == true && interactedObject.tag == "ItemTwo")
+                else if (itemFiveFound == true && interactedObject.tag == "ItemSix")
                 {
                     itemSixFound = true;
                     Debug.Log("You found item six!");
-                    audioSource.PlayOneShot(chime, 0.5F);
+                    audioSource.PlayOneShot(clock, 1.7F);
                     finalanim.SetTrigger("OpenClose");
                     i6.SetActive(false);
                     i62.SetActive(false);
